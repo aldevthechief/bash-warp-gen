@@ -19,7 +19,7 @@ peer_pub=$(echo "$response" | jq -r '.result.config.peers[0].public_key')
 client_ipv4=$(echo "$response" | jq -r '.result.config.interface.addresses.v4')
 client_ipv6=$(echo "$response" | jq -r '.result.config.interface.addresses.v6')
 
-echo "$response"
+echo response
 
 conf=$(cat <<-EOM
 [Interface]
