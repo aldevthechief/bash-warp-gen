@@ -10,7 +10,7 @@ api="https://api.cloudflareclient.com/v0i2503030000"
 ins() { curl -s -H 'user-agent:' -H 'content-type: application/json' -X "$1" "${api}/$2" "${@:3}"; }
 sec() { ins "$1" "$2" -H "authorization: Bearer $3" "${@:4}"; }
 response=$(ins POST "reg" -d "{\"install_id\":\"\",\"tos\":\"$(date -u +%FT%T.000Z)\",\"key\":\"${pub}\",\"fcm_token\":\"\",\"type\":\"android\",\"locale\":\"en_US\"}")
-echo "$response"
+
 id=$(echo "$response" | jq -r '.result.id')
 token=$(echo "$response" | jq -r '.result.token')
 response=$(sec PATCH "reg/${id}" "$token" -d '{"warp_enabled":true}')
@@ -18,6 +18,8 @@ peer_pub=$(echo "$response" | jq -r '.result.config.peers[0].public_key')
 # peer_endpoint=$(echo "$response" | jq -r '.result.config.peers[0].endpoint.host')
 client_ipv4=$(echo "$response" | jq -r '.result.config.interface.addresses.v4')
 client_ipv6=$(echo "$response" | jq -r '.result.config.interface.addresses.v6')
+
+echo "$response"
 
 conf=$(cat <<-EOM
 [Interface]
