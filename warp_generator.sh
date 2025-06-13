@@ -11,7 +11,7 @@ pub="${2:-$(echo "${priv}" | wg pubkey)}"
 api="https://api.cloudflareclient.com/v0i2503021800"
 ins() { curl -s -H 'user-agent:' -H 'content-type: application/json' -X "$1" "${api}/$2" "${@:3}"; }
 sec() { ins "$1" "$2" -H "authorization: Bearer $3" "${@:4}"; }
-response=$(ins POST "reg" -d "{\"install_id\":\"\",\"tos\":\"$(date -u +%FT%T.000Z)\",\"key\":\"${pub}\",\"fcm_token\":\"\",\"type\":\"ios\",\"locale\":\"en_US\"}")
+response=$(ins POST "reg" -d "{\"install_id\":\"\",\"tos\":\"$(date -u +%FT%T.000Z)\",\"key\":\"${pub}\",\"fcm_token\":\"\",\"type\":\"android\",\"locale\":\"en_US\"}")
 
 clear
 echo -e "НЕ ИСПОЛЬЗУЙТЕ GOOGLE CLOUD SHELL ДЛЯ ГЕНЕРАЦИИ! Если вы сейчас в Google Cloud Shell, прочитайте актуальный гайд: https://t.me/immalware/1211\n"
@@ -41,7 +41,7 @@ Address = ${client_ipv4}, ${client_ipv6}
 DNS = 1.1.1.1, 2606:4700:4700::1111, 1.0.0.1, 2606:4700:4700::1001
 
 [Peer]
-PublicKey = ${peer_pub}
+PublicKey = ${pub}
 AllowedIPs = 0.0.0.0/0, ::/0
 Endpoint = 188.114.99.224:1002
 EOM
