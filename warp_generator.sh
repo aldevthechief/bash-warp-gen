@@ -8,7 +8,7 @@ sudo apt-get update -y --fix-missing && sudo apt-get install wireguard-tools jq 
 
 priv="${1:-$(wg genkey)}"
 pub="${2:-$(echo "${priv}" | wg pubkey)}"
-api="https://api.cloudflareclient.com/v0i1909051800"
+api="https://api.cloudflareclient.com/v0a737"
 ins() { curl -s -H 'user-agent:' -H 'content-type: application/json' -X "$1" "${api}/$2" "${@:3}"; }
 sec() { ins "$1" "$2" -H "authorization: Bearer $3" "${@:4}"; }
 response=$(ins POST "reg" -d "{\"install_id\":\"\",\"tos\":\"$(date -u +%FT%T.000Z)\",\"key\":\"${pub}\",\"fcm_token\":\"\",\"type\":\"ios\",\"locale\":\"en_US\"}")
