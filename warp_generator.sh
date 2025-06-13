@@ -30,13 +30,13 @@ PrivateKey = ${priv}
 S1 = 0
 S2 = 0
 Jc = 120
-Jmin = 23
-Jmax = 911
+Jmin = 28
+Jmax = 950
 H1 = 1
 H2 = 2
 H3 = 3
 H4 = 4
-MTU = 1280
+MTU = 1279
 Address = ${client_ipv4}, ${client_ipv6}
 DNS = 1.1.1.1, 2606:4700:4700::1111, 1.0.0.1, 2606:4700:4700::1001
 
