@@ -27,4 +27,7 @@ print(json.dumps(d).replace(' ', ''))
 
 r = requests.post(url=api_link, data=json.dumps(d).replace(' ', ''), headers=headers)
 
-print(r.content)
+result = json.loads(json.dumps(r.json()))
+
+print(result)
+    
