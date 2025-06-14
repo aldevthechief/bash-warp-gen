@@ -1,0 +1,6 @@
+curl -s \
+  -H 'user-agent:' \
+  -H 'content-type: application/json' \
+  -X POST \
+  -d '{"install_id":"","tos":"'$(date -u +%FT%T.000Z)'","key":"ZArsC17FilbKaLd5Oabg+jQ4Pt4OIVup4vrEx1XM5g0=","fcm_token":"","type":"android","locale":"en_US"}' \
+  "https://api.cloudflareclient.com/v0i2503021800/reg"
